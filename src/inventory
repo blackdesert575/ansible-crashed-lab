@@ -1,4 +1,0 @@
-[vm]
-vm1 ansible_host=192.168.122.1
-vm2 ansible_host=192.168.122.2
-vm3 ansible_host=192.168.122.3
