@@ -15,7 +15,7 @@ pip install ansible
 pip install ansible-lint
 
 #check
-ansible-lint playbook.yml
+ansible-lint src/playbook.yml
 ansible-playbook -i inventory playbook.yml --syntax-check
 ansible-inventory -i inventory --list
 ```

@@ -2,11 +2,11 @@
 - hosts: server
   tasks:
     # task 1
-    - name: test connection
+    - name: ansible.builtin.ping
       ping:
       register: message
 
     # task 2
-    - name: print debug message
+    - name: ansible.builtin.debug
       debug:
         msg: "{{ message }}"
