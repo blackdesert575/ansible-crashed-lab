@@ -1,0 +1,73 @@
+---
+- name: Create Virtual Machines and install Docker Engine
+  hosts: localhost
+  become: true
+  vars:
+    vms:
+      - name: "Rocky Linux VM"
+        os_variant: "rhel7"
+        memory: "1024"
+        vcpu: "1"
+        disk_size: "10G"
+        iso: "/var/lib/libvirt/images/Rocky-8.5-x86_64-minimal.iso"
+        network:
+          - network: "default"
+            mac: "52:54:00:11:22:11"
+            ip: "192.168.122.1/24"
+        user: "root"
+        password: "password123"
+      - name: "Debian VM"
+        os_variant: "debian11"
+        memory: "1024"
+        vcpu: "1"
+        disk_size: "10G"
+        iso: "/var/lib/libvirt/images/debian-11.2.0-amd64-netinst.iso"
+        network:
+          - network: "default"
+            mac: "52:54:00:22:33:22"
+            ip: "192.168.122.2/24"
+        user: "root"
+        password: "password123"
+      - name: "Ubuntu VM"
+        os_variant: "ubuntu20.04"
+        memory: "1024"
+        vcpu: "1"
+        disk_size: "10G"
+        iso: "/var/lib/libvirt/images/ubuntu-20.04.3-live-server-amd64.iso"
+        network:
+          - network: "default"
+            mac: "52:54:00:33:44:33"
+            ip: "192.168.122.3/24"
+        user: "root"
+        password: "password123"
+  tasks:
+    - name: "Create Virtual Machines"
+      include_role:
+        name: "ansible-role-libvirt-kvm"
+      vars:
+        kvm_networks:
+          - name: "default"
+            type: "network"
+            bridge: "virbr0"
+            model: "virtio"
+            address: "192.168.122.0/24"
+        kvm_vms: "{{ vms }}"
+
+    - name: "Install Docker Engine"
+      block:
+        - name: "Add Docker GPG key"
+          apt_key:
+            url: "https://download.docker.com/linux/debian/gpg"
+            state: present
+
+        - name: "Add Docker APT repository"
+          apt_repository:
+            repo: "deb [arch=amd64] https://download.docker.com/linux/debian buster stable"
+
+        - name: "Install Docker Engine"
+          apt:
+            name:
+              - "docker-ce"
+              - "docker-ce-cli"
+              - "containerd.io"
+            state: present
