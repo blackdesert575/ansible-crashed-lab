@@ -14,8 +14,10 @@ Play ansible-qemu-kvm!
     * [Getting started with Ansible](https://docs.ansible.com/ansible/latest/getting_started/index.html)
     * [installation-guide](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installation-guide)
     * [Installing pip/setuptools/wheel with Linux Package Managers](https://packaging.python.org/en/latest/guides/installing-using-linux-tools/#debian-ubuntu-and-derivatives)
+    * [Building an inventory](https://docs.ansible.com/ansible/latest/getting_started/get_started_inventory.html)
+    * [community.general.proxmox module – Management of instances in Proxmox VE cluster](https://docs.ansible.com/ansible/latest/collections/community/general/proxmox_module.html#ansible-collections-community-general-proxmox-module-requirements)
 
-## how-to-deploy
+## quick start
 
 ```shell
 #For Debian/Ubuntu
@@ -34,6 +36,14 @@ source ~/.bashrc
 #Command 'ansible' not found, but can be installed with:
 sudo apt install ansible       # version 2.10.7+merged+base+2.10.8+dfsg-1, or
 sudo apt install ansible-core  # version 2.12.0-1ubuntu0.1
+
+#check ansibe
+ansible --version
+ansible all --list-hosts
+
+#test ansible-inventory
+ansible-inventory -i inventory.yaml --list
+ansible virtualmachines -m ping -i inventory.yaml
 ```
 
 ## Important!!!
