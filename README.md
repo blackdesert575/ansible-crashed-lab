@@ -13,7 +13,7 @@ Play ansible-qemu-kvm!
 * Ansible
     * [Getting started with Ansible](https://docs.ansible.com/ansible/latest/getting_started/index.html)
     * [installation-guide](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installation-guide)
-    * [pip for Debian/Ubuntu and derivatives](https://packaging.python.org/en/latest/guides/installing-using-linux-tools/#debian-ubuntu-and-derivatives)
+    * [Installing pip/setuptools/wheel with Linux Package Managers](https://packaging.python.org/en/latest/guides/installing-using-linux-tools/#debian-ubuntu-and-derivatives)
 
 ## how-to-deploy
 
