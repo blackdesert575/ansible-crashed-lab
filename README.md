@@ -1,23 +1,39 @@
 # ansible-qemu-kvm
 Play ansible-qemu-kvm!
 
+## Prerequisites
+
+* Ubuntu/Debian host
+* Python == 3.10.12
+* pip == 22.0.2
+* [Python dev_setup notes if needed](https://github.com/hong539/setup_dev_environment/blob/main/programming_languages/python/python.md)
+
+## tips/guides...etc
+
+* Ansible
+    * [Getting started with Ansible](https://docs.ansible.com/ansible/latest/getting_started/index.html)
+    * [installation-guide](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installation-guide)
+    * [pip for Debian/Ubuntu and derivatives](https://packaging.python.org/en/latest/guides/installing-using-linux-tools/#debian-ubuntu-and-derivatives)
+
 ## how-to-deploy
 
 ```shell
-#Setting UP Python version to 3.9
-cd /your/projects/
-pyenv install 3.9
-pyenv local 3.9.16
+#For Debian/Ubuntu
+sudo apt update
+sudo apt install python3-venv python3-pip
 
-#Test in Python venv
-pip install pipenv
-pip install ansible
-pip install ansible-lint
+#install ansilbe
+python3 -m pip install --user ansible
 
-#check
-ansible-lint src/playbook.yml
-ansible-playbook src/playbook.yml --syntax-check
-ansible-inventory -i inventory --list
+#add to PATH
+vim ~/.bashrc
+export PATH=$PATH:/home/hong/.local/bin
+source ~/.bashrc
+
+#IF install with package mangager apt
+#Command 'ansible' not found, but can be installed with:
+sudo apt install ansible       # version 2.10.7+merged+base+2.10.8+dfsg-1, or
+sudo apt install ansible-core  # version 2.12.0-1ubuntu0.1
 ```
 
 ## Important!!!
