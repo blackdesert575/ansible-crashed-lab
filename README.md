@@ -17,6 +17,9 @@ Play ansible-qemu-kvm!
     * [Building an inventory](https://docs.ansible.com/ansible/latest/getting_started/get_started_inventory.html)
     * [community.general.proxmox module – Management of instances in Proxmox VE cluster](https://docs.ansible.com/ansible/latest/collections/community/general/proxmox_module.html#ansible-collections-community-general-proxmox-module-requirements)
 
+* [Azure Bastion](https://learn.microsoft.com/zh-tw/azure/bastion/bastion-overview)
+* [JumpServer](https://github.com/jumpserver/jumpserver)
+
 ## quick start
 
 ```shell
