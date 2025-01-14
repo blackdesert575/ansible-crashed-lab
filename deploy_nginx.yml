@@ -1,0 +1,45 @@
+---
+- name: Deploy Nginx and configure Virtual Host on CentOS 7
+  hosts: webserver
+  become: true
+
+  tasks:
+    - name: Install EPEL repository (required for Nginx)
+      yum:
+        name: epel-release
+        state: present
+
+    - name: Install Nginx
+      yum:
+        name: nginx
+        state: present
+
+    - name: Start and enable Nginx service
+      service:
+        name: nginx
+        state: started
+        enabled: true
+
+    - name: Create Virtual Host configuration
+      copy:
+        dest: /etc/nginx/conf.d/example.com.conf
+        content: |
+          server {
+              listen 80;
+              server_name example.com;
+              root /usr/share/nginx/html;
+              index index.html;
+          }
+
+    - name: Create a sample index.html file
+      copy:
+        dest: /usr/share/nginx/html/index.html
+        content: "<h1>Welcome to the Virtual Host on CentOS 7!</h1>"
+        owner: nginx
+        group: nginx
+        mode: '0644'
+
+    - name: Restart Nginx to apply changes
+      service:
+        name: nginx
+        state: restarted
