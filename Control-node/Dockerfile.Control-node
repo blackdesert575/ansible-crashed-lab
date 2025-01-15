@@ -1,0 +1,10 @@
+FROM python:3.10.16-bullseye
+
+RUN python3 -m pip -V
+RUN python3 -m pip install --user ansible-core==2.16.14
+
+# Add the user-specific pip binaries to PATH
+ENV PATH="/root/.local/bin:$PATH"
+
+RUN ansible --version
+RUN ansible-playbook --version

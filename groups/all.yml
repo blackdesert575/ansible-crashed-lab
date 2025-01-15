@@ -1,0 +1,15 @@
+nginx_virtual_hosts:
+  - name: game-h5
+    server_name: "www.game-h501.com www.game-h502.com"
+    root: "/var/www/game-h5"
+    archive: "game-h5.tar.gz"
+
+  - name: app-h5
+    server_name: "www.app-h501.com www.app-h502.com"
+    root: "/var/www/app-h5"
+    archive: "app-h5.tar.gz"
+
+  - name: agent-h5
+    server_name: "www.agent-h501.com www.agent-h502.com"
+    root: "/var/www/agent-h5"
+    archive: "agent-h5.tar.gz"

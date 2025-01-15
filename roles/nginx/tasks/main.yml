@@ -1,0 +1,43 @@
+---
+- name: Install EPEL repository (for Nginx)
+  yum:
+    name: epel-release
+    state: present
+
+- name: Install Nginx
+  yum:
+    name: nginx
+    state: present
+
+- name: Start and enable Nginx service
+  service:
+    name: nginx
+    state: started
+    enabled: true
+
+- name: Create directories for Virtual Hosts
+  file:
+    path: "{{ item.root }}"
+    state: directory
+    owner: nginx
+    group: nginx
+    mode: '0755'
+  loop: "{{ nginx_virtual_hosts }}"
+
+- name: Extract project files
+  unarchive:
+    src: "roles/nginx/files/{{ item.archive }}"
+    dest: "{{ item.root }}"
+    remote_src: yes
+  loop: "{{ nginx_virtual_hosts }}"
+
+- name: Configure Nginx Virtual Hosts
+  template:
+    src: nginx_virtual_host.j2
+    dest: "/etc/nginx/conf.d/{{ item.name }}.conf"
+  loop: "{{ nginx_virtual_hosts }}"
+
+- name: Restart Nginx
+  service:
+    name: nginx
+    state: restarted

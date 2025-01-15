@@ -1,6 +1,11 @@
 # ansible-qemu-kvm
 Play ansible-qemu-kvm!
 
+## to do list
+
+* setup lab with 1 Control node(Ubuntu/Debian), 1 Managed node(CentOS)
+* For nginx deploy examples
+
 ## Prerequisites
 
 * Ubuntu/Debian host
@@ -11,6 +16,9 @@ Play ansible-qemu-kvm!
 ## tips/guides...etc
 
 * Ansible
+    * [docs/ansible-core support matrix](https://docs.ansible.com/ansible/latest/reference_appendices/release_and_maintenance.html#ansible-core-support-matrix)
+    * [Getting started with Execution Environments](https://docs.ansible.com/ansible/latest/getting_started_ee/index.html#getting-started-ee-index)
+    * [github/ansible community EE image](https://github.com/ansible-community/images/tree/main)
     * [Getting started with Ansible](https://docs.ansible.com/ansible/latest/getting_started/index.html)
     * [installation-guide](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installation-guide)
     * [Installing pip/setuptools/wheel with Linux Package Managers](https://packaging.python.org/en/latest/guides/installing-using-linux-tools/#debian-ubuntu-and-derivatives)
@@ -20,7 +28,7 @@ Play ansible-qemu-kvm!
 * [Azure Bastion](https://learn.microsoft.com/zh-tw/azure/bastion/bastion-overview)
 * [JumpServer](https://github.com/jumpserver/jumpserver)
 
-## quick start
+## setup
 
 ```shell
 #For Debian/Ubuntu
@@ -47,6 +55,40 @@ ansible all --list-hosts
 #test ansible-inventory
 ansible-inventory -i inventory.yaml --list
 ansible virtualmachines -m ping -i inventory.yaml
+```
+
+## For nginx deploy examples
+
+* dir strucure
+
+```
+ansible_project/
+├── inventory/                 # Inventory 目錄
+│   └── inventory.yml          # Inventory 文件 (YAML 格式)
+├── deploy_nginx.yml           # 主 Playbook 文件
+├── group_vars/                # 組變量目錄
+│   └── all.yml                # 全局變量文件
+├── roles/                     # 角色目錄
+│   ├── nginx/                 # nginx 角色
+│   │   ├── tasks/             # 任務目錄
+│   │   │   ├── main.yml       # 主任務文件
+│   │   ├── files/             # 靜態文件目錄
+│   │   │   ├── game-h5.tar.gz # 靜態網站檔案
+│   │   │   ├── app-h5.tar.gz
+│   │   │   ├── agent-h5.tar.gz
+│   │   ├── templates/         # 模板文件目錄
+│   │   │   ├── nginx_virtual_host.j2 # Nginx 虛擬主機模板
+│   │   ├── vars/              # 變量目錄
+│   │   │   ├── main.yml       # nginx 角色相關變量
+├── logs/                      # 執行日誌目錄
+│   └── ansible.log            # 日誌文件
+├── README.md                  # 專案說明文件
+```
+
+* run with cli
+
+```
+ansible-playbook -i inventory/inventory.yml deploy_nginx.yml
 ```
 
 ## Important!!!

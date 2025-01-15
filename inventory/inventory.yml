@@ -1,0 +1,7 @@
+all:
+  hosts:
+    exam-server02:
+      ansible_host: 10.1.107.102
+      ansible_user: examtest
+      ansible_become: true
+      ansible_become_method: sudo

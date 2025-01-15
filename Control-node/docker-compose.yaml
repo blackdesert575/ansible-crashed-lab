@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  ansible-control-node:
+    image: ansible-ee:test  # Replace with your built image tag
+    container_name: ansible-control-node
+    command: tail -f /dev/null  # Keeps the container running
+    stdin_open: true  # Allows interaction with the container if needed
+    tty: true         # Enables TTY support
