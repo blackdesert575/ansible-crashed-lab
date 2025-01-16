@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "ansible-crashed-lab"
+version = "0.1.0"
+description = "For DevOps with Ansible"
+authors = ["Hong <hong@ubuntu-lab-01>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "3.10.14"
+ansible-core = "2.16"
+ansible-dev-tools = "^24.12.0"
+ansible-lint = "6.8.7"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

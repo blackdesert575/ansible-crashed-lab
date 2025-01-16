@@ -1,0 +1,23 @@
+---
+- name: Verify SSH connectivity using local_action
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Test SSH connectivity from control node
+      local_action:
+        module: shell
+        cmd: ssh -o BatchMode=yes -o ConnectTimeout=5 {{ ansible_user }}@{{ inventory_hostname }} echo "SSH connection successful"
+      register: ssh_check_result
+      retries: 3
+      delay: 5
+      until: ssh_check_result.rc == 0
+      ignore_errors: yes
+
+    - name: Mark hosts as failed if SSH unreachable
+      ansible.builtin.set_fact:
+        ssh_failed: true
+      when: ssh_check_result is failed
+
+    - name: End play for failed hosts
+      meta: end_host
+      when: ssh_failed is defined and ssh_failed

@@ -3,7 +3,7 @@ Play ansible-qemu-kvm!
 
 ## to do list
 
-* setup lab with 1 Control node(Ubuntu/Debian), 1 Managed node(CentOS)
+* ~~setup lab with 1 Control node(Ubuntu/Debian), 1 Managed node(CentOS)~~
 * For nginx deploy examples
 
 ## Prerequisites
