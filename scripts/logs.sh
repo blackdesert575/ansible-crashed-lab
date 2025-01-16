@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euxo pipefail
 
 # 定義變數
 LOG_FILE="nginx-access.log"

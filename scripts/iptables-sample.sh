@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euxo pipefail
+
 # Reset iptables
 iptables -F
 iptables -X

@@ -1,7 +1,8 @@
 all:
   hosts:
     exam-server02:
-      ansible_host: centos-target-01.ootori.dev
+      ansible_host: centos-target-01.ootori.dev      
       ansible_user: root
+      ansible_ssh_private_key_file: /home/hong/.ssh/homelab@joe
       ansible_become: true
       ansible_become_method: sudo
