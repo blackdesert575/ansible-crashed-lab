@@ -2,5 +2,8 @@
     "ansible.ansiblePath": "/home/hong/.cache/pypoetry/virtualenvs/ansible-crashed-lab-FaQjealn-py3.10/bin/ansible",
     "ansible.python.interpreterPath": "/path/to/poetry/environment/bin/python",
     "python.pythonPath": "/home/hong/.cache/pypoetry/virtualenvs/ansible-crashed-lab-FaQjealn-py3.10",
-    "ansibleLint.path": "/home/hong/.cache/pypoetry/virtualenvs/ansible-crashed-lab-FaQjealn-py3.10/bin/ansible-lint"
+    "ansibleLint.path": "/home/hong/.cache/pypoetry/virtualenvs/ansible-crashed-lab-FaQjealn-py3.10/bin/ansible-lint",
+    "terminal.integrated.env.linux": {
+    "HUSKY": "0"
+    }    
 }
